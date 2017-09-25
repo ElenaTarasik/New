@@ -1,0 +1,27 @@
+.footer {
+    position:absolute;
+    bottom:0;
+    left:0;
+    right: 0;
+    border: 1px solid #000000;
+}
+
+.info {
+    width: 33%;
+    position: absolute;
+    height: auto;
+    left: 1%;
+}
+.service {
+    width: 33%;
+    position: absolute;
+    height: auto;
+    left: 35%;
+}
+.about {
+    width: 33%;
+
+    position: absolute;
+    height: auto;
+    left: 70%;
+}
