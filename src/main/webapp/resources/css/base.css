@@ -1,0 +1,58 @@
+body {background-color: #D2B48C;}
+.error {color: red;}
+a {text-decoration: none;} /* убирает подчеркивание слова в ссылках */
+.leftMenu{
+    width: 18%;
+    position: fixed;
+    left: 25px;
+    top: 15%;
+    background-color: #A0522D;
+}
+.topNavigation{
+    height: 10%;
+    position: relative;
+    z-index: 1;
+    float: left;
+    display: block;
+}
+.loginField{
+    width: 40%;
+    position: fixed;
+    left: 45px;
+    top: 15%;
+    background-color: #FFF8DC;
+    border: 2px solid #BC8F8F;
+    padding-left: 25px;
+    text-align: left;
+    color: #A52A2A;
+}
+.oneProduct{
+    width: 70%;
+    position: relative;
+    left: 45px;
+    top: 15%;
+    background-color: #FFF8DC;
+    border: 2px solid #BC8F8F;
+    padding: 25px;
+    margin-bottom: 5%;
+}
+.productField {
+    border: 1px solid #BC8F8F;
+    width: 75%;
+    background-color: #FFF8DC;
+    position: absolute;
+    right: 40px;
+    top: 15%;
+    margin-bottom: 5%;
+}
+.productImg{
+    border: 2px solid #BC8F8F;
+}
+.startField{
+    width: 100%;
+    position: relative;
+    top: 15%;
+    margin-bottom: 5%;
+    background-color: #FFF8DC;
+    border: 2px solid #BC8F8F;
+}

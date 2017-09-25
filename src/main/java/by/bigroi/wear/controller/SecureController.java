@@ -14,31 +14,38 @@ import javax.validation.Valid;
 public class SecureController {
 
     @GetMapping("/login")
+    public String loginPageAfterLogout(Model model) {
+        model.addAttribute("user", new User());
+        return "/user/login";
+    }
+
+    @GetMapping("/user/login")
     public String loginPage(Model model) {
         model.addAttribute("user", new User());
-        return "login";
+        return "/user/login";
     }
 
-    @GetMapping("/admin/**")
+
+    @GetMapping("/admin/admin/**")
     public String adminPage(Model model) {
         model.addAttribute("message", "Page for admin only");
-        return "admin";
+        return "/admin/admin";
     }
 
-    @GetMapping("/secure/**")
+    @GetMapping("/user/secure/**")
     public String userPage(Model model) {
         model.addAttribute("message", "Page for authorized users only");
-        return "secure";
+        return "/user/secure";
     }
 
     @PostMapping("/j_spring_security_check")
     public String loginPage(@ModelAttribute("user") @Valid User user, Model model, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             model.addAttribute("message", "Login user error");
-            return "login";
+            return "/user/login";
         } else {
             model.addAttribute("message", "You are on user page");
         }
-        return "secure";
+        return "/user/secure";
     }
 }

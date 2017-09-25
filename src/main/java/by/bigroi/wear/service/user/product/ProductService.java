@@ -8,6 +8,7 @@ import java.util.Set;
 
 public interface ProductService {
 
-    public Set<Catalog> getCatalogs(String collection);
+    public  List<Catalog> getCatalogs(String collection);
     public List<Product> getProductsFromCatalogAndCollection(String collection, String catalogName);
+    public Product getProductByID(long id);
 }

@@ -24,7 +24,7 @@ public class UserDaoImpl implements UserDao{
     @Override
     @Transactional
     public User findByUserEmail(String email) {
-        Query query = sessionFactory.getCurrentSession().createQuery("from User where email =:paramEmail");
+        Query query = sessionFactory.getCurrentSession().createQuery("from User u where u.email =:paramEmail");
         query.setParameter("paramEmail", email);
         return (User) query.getSingleResult();
     }
@@ -32,7 +32,7 @@ public class UserDaoImpl implements UserDao{
     @Override
     @Transactional
     public UserRole getRoleById(int id) {
-        Query query = sessionFactory.getCurrentSession().createQuery("from UserRole where id =:paramId");
+        Query query = sessionFactory.getCurrentSession().createQuery("from UserRole ur where ur.id =:paramId");
         query.setParameter("paramId", id);
         return (UserRole) query.getSingleResult();
     }

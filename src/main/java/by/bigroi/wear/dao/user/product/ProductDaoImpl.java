@@ -19,17 +19,18 @@ public class ProductDaoImpl implements ProductDao {
 
     @Override
     @Transactional
-    public Set<Catalog> allCatalogs(String collection) {
-        Query query = sessionFactory.getCurrentSession().createQuery("from Catalog where collection =:paramCollection");
+    public  List<Catalog> getCatalogsByCollection(String collection){
+        Query query = sessionFactory.getCurrentSession()
+                .createQuery("from Catalog where collection =:paramCollection");
         query.setParameter("paramCollection", collection);
-        return (Set<Catalog>) query.getResultList();
+        return query.getResultList();
     }
 
     @Override
     @Transactional
     public Catalog getCatalogByCollectionAndName(String collection, String catalogName) {
         Query query = sessionFactory.getCurrentSession()
-                .createQuery("from Catalog where collection =:paramCollection, name =:paramName");
+                .createQuery("from Catalog where collection =:paramCollection and name =:paramName");
         query.setParameter("paramCollection", collection);
         query.setParameter("paramName", catalogName);
         return (Catalog) query.getSingleResult();
@@ -39,9 +40,17 @@ public class ProductDaoImpl implements ProductDao {
     @Transactional
     public List<Product> allProducts(Catalog catalog) {
         Query query = sessionFactory.getCurrentSession()
-        .createQuery("from Product where catalog.collection =:paramCollection, catalog.id =:paramCatalog");
-        query.setParameter("paramCollection", catalog.getCollection());
-        query.setParameter("paramCatalog", catalog.getId());
+        .createQuery("from Product where catalog =:paramCatalog");
+        query.setParameter("paramCatalog", catalog);
         return query.getResultList();
+    }
+
+    @Override
+    @Transactional
+    public Product getProductByID(long id){
+        Query query = sessionFactory.getCurrentSession()
+                .createQuery("from Product where id =:paramId");
+        query.setParameter("paramId", id);
+        return (Product) query.getSingleResult();
     }
 }

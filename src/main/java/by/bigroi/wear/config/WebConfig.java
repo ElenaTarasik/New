@@ -2,9 +2,7 @@ package by.bigroi.wear.config;
 
 import by.bigroi.wear.service.user.user.UserDetailsServiceImpl;
 import org.springframework.context.MessageSource;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.*;
 import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.validation.Validator;
@@ -16,6 +14,10 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
 @Configuration
+
+@PropertySources(value = {
+        @PropertySource("classpath:messages.properties"),
+        @PropertySource("classpath:menu.properties") })
 @EnableWebMvc
 @ComponentScan(basePackages = { "by.bigroi.wear.*"})
 public class WebConfig extends WebMvcConfigurerAdapter {
@@ -24,7 +26,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     public InternalResourceViewResolver resolver() {
         InternalResourceViewResolver resolver = new InternalResourceViewResolver();
         resolver.setViewClass(JstlView.class);
-        resolver.setPrefix("/WEB-INF/views/");
+        resolver.setPrefix("/WEB-INF/");
         resolver.setSuffix(".jsp");
         return resolver;
     }
@@ -33,6 +35,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     public MessageSource messageSource() {
         ResourceBundleMessageSource source = new ResourceBundleMessageSource();
         source.setBasename("messages");
+        source.setBasename("menu");
         return source;
     }
 

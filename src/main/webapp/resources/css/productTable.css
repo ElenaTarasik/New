@@ -1,0 +1,11 @@
+.productTable, th, td{
+    border: 1px solid #BC8F8F;
+    padding: 5px;
+    margin: 15px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+    display: inline-block;
+}
+
+

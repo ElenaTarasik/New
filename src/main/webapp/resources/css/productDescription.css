@@ -1,0 +1,16 @@
+.descriptionTable{
+    font-size: 25px;
+    font-style: italic;
+    color: maroon;
+    border-spacing: 20px 15px;
+    text-align: center;
+    border: solid;
+}
+
+.productName{
+    color: maroon;
+    font-size: 40px;
+    font-weight: bold;
+    padding-bottom: 10px;
+    text-align: center;
+}

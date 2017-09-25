@@ -18,22 +18,23 @@ public class RegisterController {
 
     @RequestMapping(value = {"/", "/index"}, method = {RequestMethod.GET})
     public String defaultPage() {
-        return "index";
+        return "/index";
     }
 
-    @GetMapping("/registration")
+    @GetMapping("/user/registration")
     public String registrationPage(Model model) {
         model.addAttribute("user", new User());
-        return "registration";
+        return "/user/registration";
     }
 
-    @GetMapping("/saveUser")
-    public String saveUserForm(@ModelAttribute ("user") @Valid User user, Model model, BindingResult bindingResult) {
+    @GetMapping("/user/saveUser")
+    public String saveUserForm(@ModelAttribute ("user") @Valid User user, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             model.addAttribute("message", "User didn't save to database");
+            return "/user/registration";
         } else {
-            model.addAttribute("message", userService.addUser(user));
+            userService.addUser(user);
+            return "/index";
         }
-        return "registration";
     }
 }

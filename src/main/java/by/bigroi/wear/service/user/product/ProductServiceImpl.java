@@ -16,12 +16,17 @@ public class ProductServiceImpl implements ProductService {
     private ProductDao productDao;
 
     @Override
-    public Set<Catalog> getCatalogs(String collection) {
-        return productDao.allCatalogs(collection);
+    public List<Catalog> getCatalogs(String collection) {
+        return productDao.getCatalogsByCollection(collection);
     }
 
     @Override
     public List<Product> getProductsFromCatalogAndCollection(String collection, String catalogName) {
         return productDao.allProducts(productDao.getCatalogByCollectionAndName(collection, catalogName));
+    }
+
+    @Override
+    public Product getProductByID(long id) {
+        return productDao.getProductByID(id);
     }
 }

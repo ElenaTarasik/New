@@ -1,14 +1,12 @@
 package by.bigroi.wear.model.catalog;
 
 import by.bigroi.wear.model.product.Product;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@JsonIgnoreProperties
 @Table(name = "CATALOG")
 public class Catalog {
 
@@ -23,7 +21,7 @@ public class Catalog {
     @Column(name = "COLLECTION", nullable = false)
     private String collection;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "catalog")
+   @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "catalog")
     private List<Product> products = new ArrayList<Product>();
 
     //////////////// GETTERS + SETTERS ///////////////////////////

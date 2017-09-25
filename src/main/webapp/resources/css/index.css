@@ -1,0 +1,17 @@
+.head{
+    text-align: center;
+    font-style: italic;
+    font-size: 40px;
+    font-weight: bold;
+    color: maroon;
+    padding: 15px;
+}
+.indexImg{
+    width: 500px;
+    height: 600px;
+    border: 2px solid #BC8F8F;
+    margin-right: 50px;
+    margin-left: 50px;
+    position: relative;
+    left: 50px;
+}

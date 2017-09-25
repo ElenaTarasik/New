@@ -1,0 +1,32 @@
+.catalogField {
+    background-color: #FFF8DC;
+    list-style-type: none;
+    margin: 5px;
+    padding: 10px;
+    text-align: center;
+    font-family: "Times New Roman";
+    letter-spacing: 2px;
+    font-style: italic;
+}
+.catalogTable, tr, td{
+    padding: 5px;
+    margin: auto;
+    text-align: center;
+    color: #A52A2A;
+    border: none;
+}
+.catalogLink{
+    cursor: pointer;
+}
+.head{
+    cursor: context-menu;
+    font-size: 30px;
+    font-weight: bold;
+    color: #800000;
+}
+.head_coll{
+    cursor: context-menu;
+    font-size: 25px;
+    font-weight: bold;
+    color: #800000;
+}

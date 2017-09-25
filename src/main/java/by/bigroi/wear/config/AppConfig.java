@@ -3,6 +3,10 @@ package by.bigroi.wear.config;
 import java.util.Properties;
 
 import by.bigroi.wear.config.security.SecurityConfig;
+import by.bigroi.wear.model.catalog.Catalog;
+import by.bigroi.wear.model.product.Product;
+import by.bigroi.wear.model.product.ProductColor;
+import by.bigroi.wear.model.product.ProductSize;
 import by.bigroi.wear.model.user.User;
 import by.bigroi.wear.model.user.UserRole;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,7 +57,7 @@ public class AppConfig {
                 env.getProperty("hibernate.c3p0.max_statements"));
 
         factoryBean.setHibernateProperties(props);
-        factoryBean.setAnnotatedClasses(User.class, UserRole.class);
+        factoryBean.setAnnotatedClasses(User.class, UserRole.class, Catalog.class, Product.class, ProductColor.class, ProductSize.class);
         return factoryBean;
     }
 
