@@ -25,13 +25,6 @@ public class SecureController {
         return "/user/login";
     }
 
-
-    @GetMapping("/admin/admin/**")
-    public String adminPage(Model model) {
-        model.addAttribute("message", "Page for admin only");
-        return "/admin/admin";
-    }
-
     @GetMapping("/user/secure/**")
     public String userPage(Model model) {
         model.addAttribute("message", "Page for authorized users only");

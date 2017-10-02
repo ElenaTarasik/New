@@ -3,9 +3,10 @@
     padding: 5px;
     margin: 15px;
     text-align: center;
-    font-weight: bold;
     font-size: 20px;
     display: inline-block;
 }
-
+.productTable{
+    font-weight: bold;
+}
 

@@ -6,7 +6,6 @@
     <title>WELCOME_PAGE</title>
     <link type="text/css" rel="stylesheet" href="/resources/css/base.css"/>
     <link type="text/css" rel="stylesheet" href="/resources/css/index.css"/>
-    <link type="text/css" rel="stylesheet" href="/resources/css/footer.css"/>
     <script src="/resources/js/jquery-3.2.1.js"></script>
 </head>
 </head>
@@ -23,9 +22,9 @@
         </tr>
     </table>
     <div class="head">Время покупать!</div>
-    <div class="footer">
-        <c:import url="/WEB-INF/blocks/footer.jsp"/>
-    </div>
+</div>
+<div class="footerField">
+    <c:import url="/WEB-INF/blocks/footer.jsp"/>
 </div>
 </body>
 </html>

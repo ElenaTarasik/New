@@ -14,7 +14,7 @@
 <div class="productName">${product.name}</div>
 <table class="descriptionTable">
     <tr>
-        <td><img class="productImg" src="${product.pictureLink}" width="400" height="480"/></td>
+        <td><img class="productImg" src="/resources/image/${product.pictureLink}" width="400" height="480"/></td>
         <td style="text-align: left">
             <b>Артикул:</b> 00${product.id}<br>
             <b>Описание: </b>${product.description}<br>
@@ -26,6 +26,9 @@
         <td><button><a href="  " >Добавить в корзину</a></button></td>
     </tr>
 </table>
+</div>
+<div class="footerField">
+    <c:import url="/WEB-INF/blocks/footer.jsp"/>
 </div>
 </body>
 </html>

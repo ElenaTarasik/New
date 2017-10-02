@@ -1,34 +1,36 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: xxx
-  Date: 25.09.2017
-  Time: 19:40
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<div class="footer", align = "center">
-    <div class="info">
+<html>
+<head>
+    <title>FOOTER</title>
+    <link type="text/css" rel="stylesheet" href="/resources/css/base.css"/>
+    <link type="text/css" rel="stylesheet" href="/resources/css/footer.css"/>
+    <script src="/resources/js/jquery-3.2.1.js"></script>
+    <script src="/resources/js/footer.js"></script>
+</head>
+<body>
+<div class="footerField">
+    <div class="footer_info">
         BigRoiWear.by -  модный <br>
         интернет-магазин одежды.<br>
         Доставка по всей Беларуси!<br>
         Прием заказов онлайн круглосуточно.<br>
-        Copyright (c) BigRoiWear.by
+        <span class="copyright">Copyright (c) BigRoiWear.by</span>
     </div>
-    <div class="service">Сервис и поддержка <p/>
-        <ul id="list">
-            <li><a href="">Как сделать заказ</a></li>
-            <li><a href="">Способы оплаты</a></li>
-            <li><a href="">Доставка</a></li>
-            <li><a href="">Пункты самовывоза</a></li>
-        </ul>
-    </div>
-    <div class="about">О компании <p/>
-        <ul id="list">
-            <li><a href="">О нас</a></li>
-            <li><a href="">Контакты</a></li>
-            <li><a href="">Наши преимущества</a></li>
-            <li><a href="">Партнерам</a></li>
-        </ul>
-    </div>
+    <div class="service">Сервис и поддержка</div>
+    <ul class="service_list">
+        <li><a href="">Как сделать заказ</a></li>
+        <li><a href="">Способы оплаты</a></li>
+        <li><a href="">Доставка</a></li>
+        <li><a href="">Пункты самовывоза</a></li>
+    </ul>
+    <div class="about_us">О компании</div>
+    <ul class="about_us_list">
+        <li><a href="">О нас</a></li>
+        <li><a href="">Контакты</a></li>
+        <li><a href="">Наши преимущества</a></li>
+        <li><a href="">Партнерам</a></li>
+    </ul>
 </div>
+</body>
+</html>
 

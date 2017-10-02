@@ -9,14 +9,16 @@
     font-style: italic;
 }
 .catalogTable, tr, td{
-    padding: 5px;
     margin: auto;
     text-align: center;
     color: #A52A2A;
     border: none;
+    font-size: 20px;
 }
 .catalogLink{
     cursor: pointer;
+    margin-bottom: 5px;
+    font-style: italic;
 }
 .head{
     cursor: context-menu;
@@ -26,7 +28,7 @@
 }
 .head_coll{
     cursor: context-menu;
-    font-size: 25px;
+    font-size: 21px;
     font-weight: bold;
     color: #800000;
 }

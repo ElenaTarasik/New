@@ -28,5 +28,8 @@
     <span>${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}</span>
 </h3>
 </div>
+<div class="footerField">
+    <c:import url="/WEB-INF/blocks/footer.jsp"/>
+</div>
 </body>
 </html>

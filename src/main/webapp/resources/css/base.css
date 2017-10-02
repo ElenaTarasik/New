@@ -1,6 +1,8 @@
-body {background-color: #D2B48C;}
+body {
+    background-color: #D2B48C;
+}
 .error {color: red;}
-a {text-decoration: none;} /* убирает подчеркивание слова в ссылках */
+a {text-decoration: none;}
 .leftMenu{
     width: 18%;
     position: fixed;
@@ -17,14 +19,15 @@ a {text-decoration: none;} /* убирает подчеркивание слов
 }
 .loginField{
     width: 40%;
-    position: fixed;
+    position: relative;
     left: 45px;
-    top: 15%;
+    top: 100px;
     background-color: #FFF8DC;
     border: 2px solid #BC8F8F;
     padding-left: 25px;
     text-align: left;
     color: #A52A2A;
+    margin-bottom: 15%;
 }
 .oneProduct{
     width: 70%;
@@ -34,7 +37,7 @@ a {text-decoration: none;} /* убирает подчеркивание слов
     background-color: #FFF8DC;
     border: 2px solid #BC8F8F;
     padding: 25px;
-    margin-bottom: 5%;
+    margin-bottom: 10%;
 }
 .productField {
     border: 1px solid #BC8F8F;
@@ -43,7 +46,9 @@ a {text-decoration: none;} /* убирает подчеркивание слов
     position: absolute;
     right: 40px;
     top: 15%;
-    margin-bottom: 5%;
+}
+.productsContent{
+    margin-bottom: 60%;
 }
 .productImg{
     border: 2px solid #BC8F8F;
@@ -52,7 +57,39 @@ a {text-decoration: none;} /* убирает подчеркивание слов
     width: 100%;
     position: relative;
     top: 15%;
-    margin-bottom: 5%;
+    margin-bottom: 10%;
     background-color: #FFF8DC;
     border: 2px solid #BC8F8F;
+}
+.footerField{
+    padding: 15px;
+    width: 100%;
+    background-color: #A0522D;
+    position: absolute;
+    left: 0;
+    margin-bottom: 0;
+}
+.roleField{
+    position: relative;
+    top: 15%;
+    margin-bottom: 10%;
+}
+.adminField{
+    border: 2px solid #BC8F8F;
+    width: 85%;
+    background-color: #FFF8DC;
+    position: relative;
+    top: 15%;
+    left: 40px;
+    padding: 25px;
+    margin-bottom: 10%;
+}
+.adminMenu{
+    padding: 2px;
+    position: relative;
+    float: right;
+    background-color: #A0522D;
+    border: 2px solid lavender;
+
+
 }

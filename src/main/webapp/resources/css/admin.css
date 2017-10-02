@@ -1,0 +1,41 @@
+.editTable, th, td {
+    border: 1px solid maroon;
+}
+.editTable {
+    width: 100%;
+    text-align: center;
+    align-content: center;
+    margin-top: 10px;
+}
+.head{
+    text-align: center;
+    font-size: 25px;
+    color: maroon;
+    font-weight: bold;
+}
+.delMess{
+    text-align: center;
+    font-size: 20px;
+    color: maroon;
+    font-style: italic;
+}
+.editForm input{
+    font-size: 15px;
+    font-style: italic;
+    margin-top: 25px;
+}
+.formLab{
+    color: maroon;
+    font-style: italic;
+    font-size: 25px;
+    margin-left: 60px;
+}
+.adminTable{
+    font-size: 20px;
+    font-weight: bold;
+    padding: 8px;
+    color: #FFD700;
+}
+.mainField{
+    margin-top: 60px;
+}

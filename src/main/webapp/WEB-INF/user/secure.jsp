@@ -14,5 +14,8 @@
 <sec:authentication property="authorities"/><br>
 <h1>${message}</h1><br>
 <h3><a href="logout">Logout</a></h3>
+<div class="footerField">
+    <c:import url="/WEB-INF/blocks/footer.jsp"/>
+</div>
 </body>
 </html>

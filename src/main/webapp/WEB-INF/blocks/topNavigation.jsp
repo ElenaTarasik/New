@@ -11,6 +11,7 @@
 </head>
 <body>
 <div class="topNavigation">
+
 <ul_top>
     <li_top> Здравствуйте! Хотите <a href="/user/login"> войти </a> или </li_top>
     <li_top><a href="/user/registration">зарегистрироваться</a>?</li_top>
@@ -23,42 +24,42 @@
 
 <ul_bottom>
     <li_bottom class="dropdown" id="man_winter">
-        <span class="coll">Мужская коллекция осень-зима</span>
+        <span class="coll"><spring:message code="man_winter"/></span>
         <div class="dropdown-content">
-            <span bdcat="outerwear" class="cat">Верхняя одежда</span>
-            <span bdcat="hats_scarves" class="cat">Шапки Шарфы</span>
-            <span bdcat="sweaters" class="cat">Свитера Кофты</span>
-            <span bdcat="pants" class="cat">Брюки Джинсы</span>
+            <span bdcat="outerwear" class="cat"><spring:message code="outerwear"/></span>
+            <span bdcat="hats_scarves" class="cat"><spring:message code="hats_scarves"/></span>
+            <span bdcat="sweaters" class="cat"><spring:message code="sweaters"/></span>
+            <span bdcat="pants" class="cat"><spring:message code="pants"/></span>
         </div>
     </li_bottom>
     <li_bottom class="dropdown" id="man_summer">
-        <span class="coll">Мужская коллекция весна-лето</span>
+        <span class="coll"><spring:message code="man_summer"/></span>
         <div class="dropdown-content">
-            <span bdcat="outerwear" class="cat">Верхняя одежда</span>
-            <span bdcat="shirts" class="cat">Рубашки</span>
-            <span bdcat="singlet" class="cat">Майки Футболки</span>
-            <span bdcat="pants_shorts" class="cat">Брюки Джинсы Шорты</span>
+            <span bdcat="outerwear" class="cat"><spring:message code="outerwear"/></span>
+            <span bdcat="shirts" class="cat"><spring:message code="shirts"/></span>
+            <span bdcat="singlet" class="cat"><spring:message code="singlet"/></span>
+            <span bdcat="pants_shorts" class="cat"><spring:message code="pants_shorts"/></span>
         </div>
     </li_bottom>
     <li_bottom class="dropdown" id="woman_winter">
-        <span class="coll">Женская коллекция осень-зима</span>
+        <span class="coll"><spring:message code="woman_winter"/></span>
         <div class="dropdown-content">
-            <span bdcat="outerwear" class="cat">Верхняя одежда</span>
-            <span bdcat="hats_scarves" class="cat">Шапки Шарфы</span>
-            <span bdcat="sweaters" class="cat">Свитера Кофты</span>
-            <span bdcat="pants" class="cat">Брюки Джинсы</span>
-            <span bdcat="dresses_skirts" class="cat">Платья Юбки</span>
+            <span bdcat="outerwear" class="cat"><spring:message code="outerwear"/></span>
+            <span bdcat="hats_scarves" class="cat"><spring:message code="hats_scarves"/></span>
+            <span bdcat="sweaters" class="cat"><spring:message code="sweaters"/></span>
+            <span bdcat="pants" class="cat"><spring:message code="pants"/></span>
+            <span bdcat="dresses_skirts" class="cat"><spring:message code="dresses_skirts"/></span>
         </div>
     </li_bottom>
     <li_bottom class="dropdown" id="woman_summer">
-        <span class="coll">Женская коллекция весна-лето</span>
+        <span class="coll"><spring:message code="woman_summer"/></span>
         <div class="dropdown-content">
-            <span bdcat="outerwear" class="cat">Верхняя одежда</span>
-            <span bdcat="shirts" class="cat">Рубашки</span>
-            <span bdcat="singlet" class="cat">Майки Футболки</span>
-            <span bdcat="pants" class="cat">Брюки Джинсы</span>
-            <span bdcat="skirts_shorts" class="cat">Юбки Шорты</span>
-            <span bdcat="dresses" class="cat">Платья</span>
+            <span bdcat="outerwear" class="cat"><spring:message code="outerwear"/></span>
+            <span bdcat="shirts" class="cat"><spring:message code="shirts"/></span>
+            <span bdcat="singlet" class="cat"><spring:message code="singlet"/></span>
+            <span bdcat="pants" class="cat"><spring:message code="pants"/></span>
+            <span bdcat="skirts_shorts" class="cat"><spring:message code="skirts_shorts"/></span>
+            <span bdcat="dresses" class="cat"><spring:message code="dresses"/></span>
         </div>
     </li_bottom>
 </ul_bottom>
