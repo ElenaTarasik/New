@@ -38,7 +38,7 @@ public class OrderDaoImpl implements OrderDao {
 
     }
 
-    @Override
+   /* @Override
     @Transactional
     public Order getOrderById(long id) {
 
@@ -48,6 +48,16 @@ public class OrderDaoImpl implements OrderDao {
           return (Order) query.getSingleResult();
     }
 
+
+    @Override
+    @Transactional
+    public OrderItem getOrderItemById(long id) {
+
+        Query query = sessionFactory.getCurrentSession().createQuery("from OrderItem where idorder_items=:paramId");
+        query.setParameter("paramId",id);
+
+        return (OrderItem) query.getSingleResult();
+    }*/
 
 }
 

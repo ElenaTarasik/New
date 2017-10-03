@@ -48,9 +48,6 @@ public class BasketImpl implements BasketService {
     public List<Product> basketProduct(Map<Long, Integer> quan) {
 
 
-
-
-
         List<Product> products = new ArrayList<>();
 
         if (quan != null) {
@@ -73,8 +70,8 @@ public class BasketImpl implements BasketService {
 
         List<Product> products = basketProduct(quan);
 
-        int quantity=0;
-        double p=0;
+        int quantity = 0;
+        double p = 0;
         Order order = new Order();
 
         if (quan != null) {
@@ -82,8 +79,8 @@ public class BasketImpl implements BasketService {
 
                 for (int i = 0; i < products.size(); i++) {
 
-                    if(products.get(i).getId()==key){
-                        p+=(products.get(i).getPrice()*quan.get(key));
+                    if (products.get(i).getId() == key) {
+                        p += (products.get(i).getPrice() * quan.get(key));
                         quantity++;
                     }
 
@@ -93,16 +90,29 @@ public class BasketImpl implements BasketService {
 
         }
 
-         order.setDate(new Date());
-         order.setQuantity(quantity);
-         order.setPrice(p);
-         orderDao.addOrderBasket(order);
+        order.setDate(new Date());
+        order.setQuantity(quantity);
+        order.setPrice(p);
+        orderDao.addOrderBasket(order);
+        for (long key : quan.keySet()) {
+
+            for (int i = 0; i < products.size(); i++) {
+
+                if (products.get(i).getId() == key) {
+
+                    OrderItem orderItem = new OrderItem();
+                    orderItem.setQuantity(quan.get(key));
+                    orderItem.setProduct(products.get(i));
+                    orderItem.setOrder(order);
+                    orderDao.addOrderItemsBasket(orderItem);
+
+                }
+
+            }
 
 
-         }
 
         }
 
-
     }
-
+}

@@ -10,7 +10,8 @@ public interface OrderDao{
 
     void addOrderBasket (Order order);
     void addOrderItemsBasket(OrderItem orderItem);
-    Order getOrderById(long id);
+    /*Order getOrderById(long id);
+    OrderItem getOrderItemById(long id);*/
 
 
 }
