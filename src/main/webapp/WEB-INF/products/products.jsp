@@ -34,7 +34,7 @@
                     </tr>
                     <tr>
                         <td>${product.price} руб.</td>
-                        <td><button><a href="  " >Просмотреть</a></button></td>
+                        <td><button><a style="border: none" class="productImg" >Просмотреть</a></button></td>
                         <input class="prodId" type="hidden" value="${product.id}">
                     </tr>
                 </table>
