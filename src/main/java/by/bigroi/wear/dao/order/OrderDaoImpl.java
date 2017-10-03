@@ -42,7 +42,7 @@ public class OrderDaoImpl implements OrderDao {
     @Transactional
     public Order getOrderById(long id) {
 
-        Query query = sessionFactory.getCurrentSession().createQuery("from Order where id:=paramId");
+        Query query = sessionFactory.getCurrentSession().createQuery("from Order where idorder=:paramId");
         query.setParameter("paramId",id);
 
           return (Order) query.getSingleResult();

@@ -98,9 +98,7 @@ public class BasketImpl implements BasketService {
          order.setPrice(p);
          orderDao.addOrderBasket(order);
 
-         if(orderDao.getOrderById(1)!=null){
-             System.out.println("Yes.");
-             System.out.println("No.");
+
          }
 
         }
