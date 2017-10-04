@@ -7,9 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
-import java.sql.SQLException;
 import java.util.List;
-import java.util.Set;
 
 @Repository("userDao")
 public class UserDaoImpl implements UserDao{
@@ -73,6 +71,12 @@ public class UserDaoImpl implements UserDao{
         query.setParameter("oldEmail", oldEmail);
         query.executeUpdate();
     }
+
+   /* @Override
+    @Transactional
+    public void updateUser(User user, String oldEmail) throws Exception{
+        sessionFactory.getCurrentSession().update(user);
+    }*/
 
     @Override
     @Transactional

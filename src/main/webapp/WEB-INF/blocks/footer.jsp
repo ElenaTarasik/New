@@ -1,6 +1,15 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<div class="footer", align = "center">
-    <div class="info">
+<html>
+<head>
+    <title>FOOTER</title>
+    <link type="text/css" rel="stylesheet" href="/resources/css/base.css"/>
+    <link type="text/css" rel="stylesheet" href="/resources/css/footer.css"/>
+    <script src="/resources/js/jquery-3.2.1.js"></script>
+    <script src="/resources/js/footer.js"></script>
+</head>
+<body>
+<div class="footerField">
+    <div class="footer_info">
         BigRoiWear.by -  модный <br>
         интернет-магазин одежды.<br>
         Доставка по всей Беларуси!<br>

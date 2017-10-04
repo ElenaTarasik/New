@@ -7,10 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.sql.SQLException;
-import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Service("userService")
@@ -20,14 +18,15 @@ public class UserServiceImpl implements UserService {
     private UserDao userDao;
 
     @Autowired
-    private PasswordEncoder bCryptPasswordEncoder;
+    private PasswordEncoder passwordEncoder;
 
     @Override
     public String addUser(User user) {
-        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         Set<UserRole> roles = new HashSet<>();
         roles.add(userDao.getRoleById(2));  // id = 1 ADMIN  /  id = 2 CUSTOMER
         user.setRoles(roles);
+        user.setRegDate(new Date());
         userDao.saveUser(user);
         return "User saved to database";
     }
@@ -56,7 +55,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public String updateUserByEmail(User user, String oldEmail) throws Exception {
-        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         userDao.updateUser(user, oldEmail);
         return "User updated successfully";
     }
@@ -72,29 +71,23 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public String checkPass(User user, String oldPass, String new1Pass, String new2Pass) {
-    if (new1Pass == null || new2Pass == null) {
+    if (oldPass == null || new1Pass == null || new2Pass == null) {
             return "Fill in the blank fields";
     } else {
-        System.out.println("СТАРЫЙ oldPass " + oldPass);
-        System.out.println("СТАРЫЙ new1Pass " + new1Pass);
-        System.out.println("СТАРЫЙ new2Pass " + new2Pass);
-        System.out.println("СТАРЫЙ кодированный oldPass " + bCryptPasswordEncoder.encode(oldPass));
-        System.out.println("СТАРЫЙ кодированный new1Pass " + bCryptPasswordEncoder.encode(new1Pass));
-        System.out.println("СТАРЫЙ кодированный new2Pass " + bCryptPasswordEncoder.encode(new2Pass));
-            if (!bCryptPasswordEncoder.encode(oldPass).equals(user.getPassword())) {
+         /*   if (!passwordEncoder.encode(oldPass).equals(user.getPassword())) {
                 return "User with such password does not exist";
-            } else {
+            } else {*/
                 if (!new1Pass.equals(new2Pass)) {
                     return "The second password does not match the first one";
                 } else {
                     return "Ok";
                 }
-            }
+        //    }
         }
     }
 
     public void updateUserPassword(User user, String newPass){
-        user.setPassword(bCryptPasswordEncoder.encode(newPass));
+        user.setPassword(passwordEncoder.encode(newPass));
         userDao.updatePassword(user);
     }
 }

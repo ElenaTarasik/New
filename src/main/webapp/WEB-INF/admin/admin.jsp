@@ -33,6 +33,7 @@
                             <th>Электронный адрес</th>
                             <th>Телефон</th>
                             <th>Адрес</th>
+                            <th>Дата регистрации</th>
                             <sec:authorize access="hasRole('ROLE_ADMIN')">
                                 <th colspan="3">Действие</th>
                             </sec:authorize>
@@ -45,10 +46,11 @@
                             <td>${user.email}</td>
                             <td>${user.phone}</td>
                             <td>${user.address}</td>
+                            <td>${user.regDate}</td>
                             <sec:authorize access="hasRole('ROLE_ADMIN')">
                                 <td><a class="rolePage" style="font-weight: bold; color: maroon"  href="/admin/rolePage?email=${user.email}">Cписок ролей</a></td>
                                 <td><a class="editUserPage" style="font-weight: bold; color: maroon" href="/admin/editUserPage?email=${user.email}">Редактировать</a></td>
-                                <td><a style="font-weight: bold; color: maroon" href="/admin/deleteUser?email=${user.email}">Удалить</a></td>
+                                <td><span class="delBut" style="cursor:pointer; font-weight: bold; color: maroon" attr="${user.email}">Удалить</span></td>
                             </sec:authorize>
                         </tr>
                         </c:forEach>

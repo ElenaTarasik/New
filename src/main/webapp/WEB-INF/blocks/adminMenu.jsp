@@ -8,7 +8,7 @@
             <a class="adminTable" href="/admin/admin">Список зарегистрированных пользователей</a>
             <a class="adminTable" href="/admin/passwordChange">Смена пароля</a>
           <%--  <a class="adminTable" href="/admin/admin">Статистика</a>--%>
-            <a class="adminTable" href="logout">Выход</a>
+            <a class="adminTable" href="/logout">Выход</a>
 </div>
 </body>
 </html>

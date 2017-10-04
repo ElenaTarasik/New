@@ -13,7 +13,8 @@
 <div class="topNavigation">
 
 <ul_top>
-    <li_top> Здравствуйте! Хотите <a href="/user/login"> войти </a> или </li_top>
+    <li_top> <a href="/index" style="font-style: italic; font-weight: bold; color: #FFD700"> BigRoiWear  </a> приветствует Вас!
+        Хотите <a href="/user/login"> войти </a> или </li_top>
     <li_top><a href="/user/registration">зарегистрироваться</a>?</li_top>
     <li_top style="float:right"><a href=""><image src="" width=30 height=15 /></a></li_top>
     <li_top style="float:right"> <a href="/basket/basket">Корзина</a> </li_top>

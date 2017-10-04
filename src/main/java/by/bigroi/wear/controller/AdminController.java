@@ -1,16 +1,16 @@
 package by.bigroi.wear.controller;
 
+import by.bigroi.wear.model.response.ResponseMessage;
 import by.bigroi.wear.model.user.User;
 import by.bigroi.wear.service.user.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.*;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
-import java.sql.SQLException;
 import java.util.List;
 
 @Controller
@@ -18,6 +18,7 @@ public class AdminController {
 
     List<User> userList;
     String oldEmail;
+    User userEdit;
 
     @Autowired
     private UserService userService;
@@ -30,21 +31,26 @@ public class AdminController {
         return "/admin/admin";
     }
 
-    @GetMapping("/admin/deleteUser")
-    public String deleteUser(Model model, HttpServletRequest request) {
-        model.addAttribute("delMessage", userService.deleteUser(request.getParameter("email")));
-        return "/admin/admin";
+    @PostMapping("/admin/deleteUser")
+    public @ResponseBody
+    ResponseMessage deleteUser(@RequestBody User user){
+        System.out.println("!!!!!!!!!! в контроллере мэйл " + user.getEmail());
+        ResponseMessage msg = new ResponseMessage();
+        msg.setMessage(userService.deleteUser(user.getEmail()));
+        return msg;
     }
 
     @GetMapping("/admin/editUserPage")
     public String editPage(Model model, HttpServletRequest request) {
         oldEmail = request.getParameter("email");
-        model.addAttribute("user", new User());
+        userEdit = userService.findByUserEmail(oldEmail);
+        model.addAttribute("userEdit", userEdit);
         return "/admin/editPage";
     }
 
     @GetMapping("/admin/editUser")
     public String editUser(@ModelAttribute("user") @Valid User user, BindingResult bindingResult, Model model) {
+        model.addAttribute("userEdit", userEdit);
         if (bindingResult.hasErrors()) {
             model.addAttribute("message", "User's data didn't edit");
         } else {

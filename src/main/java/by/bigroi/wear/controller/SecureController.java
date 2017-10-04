@@ -1,6 +1,8 @@
 package by.bigroi.wear.controller;
 
 import by.bigroi.wear.model.user.User;
+import by.bigroi.wear.service.user.user.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -8,10 +10,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 @Controller
 public class SecureController {
+
+    @Autowired
+    private UserService userService;
 
     @GetMapping("/login")
     public String loginPageAfterLogout(Model model) {
@@ -27,7 +33,7 @@ public class SecureController {
 
     @GetMapping("/user/secure/**")
     public String userPage(Model model) {
-        model.addAttribute("message", "Page for authorized users only");
+        model.addAttribute("user", new User());
         return "/user/secure";
     }
 
@@ -40,5 +46,19 @@ public class SecureController {
             model.addAttribute("message", "You are on user page");
         }
         return "/user/secure";
+    }
+
+    @GetMapping("/user/secure/editUserPassword")
+    public String ediPassword(Model model, HttpServletRequest request) {
+        User user = userService.findByUserEmail(request.getParameter("login"));
+        String passResult = userService.checkPass(user, request.getParameter("oldPass"),
+                request.getParameter("new1Pass"), request.getParameter("new2Pass"));
+        if(!passResult.equals("Ok")){
+            model.addAttribute("message", passResult);
+        } else {
+            userService.updateUserPassword(user, request.getParameter("new2Pass"));
+            model.addAttribute("message", "User's password updated successfully");
+        }
+        return "/user/login";
     }
 }

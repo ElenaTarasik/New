@@ -1,19 +1,37 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
     <title>AUTHORIZED_USER_PAGE</title>
     <link type="text/css" rel="stylesheet" href="/resources/css/base.css"/>
+    <link type="text/css" rel="stylesheet" href="/resources/css/admin.css"/>
 </head>
 <body>
 <div class="topNavigation">
     <c:import url="/WEB-INF/blocks/topNavigation.jsp"/>
 </div>
 <sec:authentication property="name" /><br>
-<sec:authentication property="authorities"/><br>
-<h1>${message}</h1><br>
-<h3><a href="logout">Logout</a></h3>
+<sec:authentication property="authorities"/><br>--%>
+<div class="userField">
+    <span class="head">Смена пароля</span><br>
+    <div class="editForm">
+        <form action="editUserPassword" method="get" modelAttribute="user">
+            <span class="formLab">Введите старый пароль:</span>
+            <input class="editForm" name="oldPass" type="password" required="true" placeholder="123AsKKl5"/><br>
+            <span class="formLab">Введите новый пароль:</span>
+            <input class="editForm" name="new1Pass" minlength="5" type="password" required="true" placeholder="123AsKKl5"/><br>
+            <span class="formLab">Подтвердите новый пароль:</span>
+            <input class="editForm" name="new2Pass" minlength="5" type="password" required="true" placeholder="123AsKKl5"/><br>
+            <input name="login" type="hidden" value="<sec:authentication property="name"/>"/>
+            <br><p><button type="submit">Сохранить новый пароль</button></p>
+        </form>
+    </div>
+    <p><span class="delMess">${message}</span></p>
+    <button><a href="/logout">Выход</a></button>
+</div>
+
 <div class="footerField">
     <c:import url="/WEB-INF/blocks/footer.jsp"/>
 </div>

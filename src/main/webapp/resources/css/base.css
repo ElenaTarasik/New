@@ -90,6 +90,15 @@ a {text-decoration: none;}
     float: right;
     background-color: #A0522D;
     border: 2px solid lavender;
-
-
+}
+.userField{
+    width: 60%;
+    position: relative;
+    left: 45px;
+    top: 100px;
+    background-color: #FFF8DC;
+    border: 2px solid #BC8F8F;
+    padding: 25px;
+    text-align: left;
+    margin-bottom: 15%;
 }

@@ -5,6 +5,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -43,8 +44,7 @@ public class User {
     private String address;
 
     @Column(name = "REG_DATE")
-    @DateTimeFormat(pattern = "MM/dd/yy")
-    private String regDate;
+    private Date regDate;
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable(name = "USER_USER_ROLE", joinColumns = {
@@ -116,11 +116,11 @@ public class User {
         this.address = address;
     }
 
-    public String getRegDate() {
+    public Date getRegDate() {
         return regDate;
     }
 
-    public void setRegDate(String regDate) {
+    public void setRegDate(Date regDate) {
         this.regDate = regDate;
     }
 

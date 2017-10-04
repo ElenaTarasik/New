@@ -20,26 +20,25 @@
     <div class="mainField">
 <span class="head">Заполните, пожалуйста, поля формы:</span>
 <div class="editForm">
-    <spring:form action="editUser" method="get" modelAttribute="user">
+    <spring:form action="editUser" method="get" modelAttribute="userEdit">
     <span class="formLab">Фамилия:</span>
-        <spring:input cssClass="editForm" path="surname" type="text" required="true" placeholder="Your surname" />
+        <spring:input cssClass="editForm" path="surname" type="text" required="true" value="${userEdit.surname}" />
         <spring:errors path="surname" cssClass="error" /><br>
     <span class="formLab">Имя:</span>
-        <spring:input cssClass="editForm" path="name" type="text" required="true" placeholder="Your name" />
+        <spring:input cssClass="editForm" path="name" type="text" required="true" value="${userEdit.name}" />
         <spring:errors path="name" cssClass="error" /><br>
     <span class="formLab">Электронный адрес:</span>
-        <spring:input cssClass="editForm" path="email" type="email" required="true" placeholder="bigroiWear.2017@gmail.com" />
+        <spring:input cssClass="editForm" path="email" type="email" required="true" value="${userEdit.email}" />
         <spring:errors path="email" cssClass="error" /><br>
     <span class="formLab">Пароль:</span>
-        <spring:input cssClass="editForm" path="password" type="password" required="true" placeholder="123AsKKl5"/>
+        <spring:input cssClass="editForm" path="password" type="password" required="true" value="${userEdit.password}"/>
         <spring:errors path="password" cssClass="error" /><br>
     <span class="formLab">Телефона:</span>
-        <spring:input cssClass="editForm" path="phone" type="tel" required="true" placeholder="+375(xx) xxx xx xx"/>
+        <spring:input cssClass="editForm" path="phone" type="tel" required="true" value="${userEdit.phone}"/>
         <spring:errors path="phone" cssClass="error" /><br>
     <span class="formLab">Адрес:</span>
-        <spring:input cssClass="editForm" path="address" type="address" required="true" placeholder="Город, улица, дом, квартира"/>
-        <spring:errors path="address" cssClass="error" /><br>
-        <br><p><button type="submit">Обновить данные пользователя</button></p>
+        <spring:input cssClass="editForm" path="address" type="address" value="${userEdit.address}"/><br>
+        <br><p><button class="editBut" type="submit">Обновить данные пользователя</button></p>
 </spring:form>
 </div>
 <p class="delMess">${message}</p>

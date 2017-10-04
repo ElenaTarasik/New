@@ -6,9 +6,12 @@
     <title>ROLE_PAGE</title>
     <link type="text/css" rel="stylesheet" href="/resources/css/base.css"/>
     <link type="text/css" rel="stylesheet" href="/resources/css/admin.css"/>
+    <link type="text/css" rel="stylesheet" href="/resources/css/jquery.fancybox.css"/>
     <script src="/resources/js/jquery-3.2.1.js"></script>
-    <script src="/resources/js/bootbox.min.js"></script>
+    <script src="/resources/js/jquery.fancybox.js"></script>
+    <script src="/resources/js/jquery.fancybox.pack.js"></script>
     <script src="/resources/js/admin.js"></script>
+
 </head>
 <body>
 <div class="topNavigation">
@@ -44,12 +47,13 @@
                     </c:forEach>
                 </td>
                 <sec:authorize access="hasRole('ROLE_ADMIN')">
-<td><span class="editRole" style="cursor: pointer; font-size: 20px; font-weight: bold; color: maroon" >Изменить роли</span></td>
+<td><a href="#fancyField" rel="nofollow" class="editRole" style="cursor: pointer; font-size: 20px; font-weight: bold; color: maroon" >Изменить роли</a></td>
                 </sec:authorize>
             </tr>
     </table>
 </div>
 </div>
+
 <div class="footerField">
     <c:import url="/WEB-INF/blocks/footer.jsp"/>
 </div>

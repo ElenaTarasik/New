@@ -1,8 +1,7 @@
 $(document).ready(function(){
-    var options = [
-        {value: 1, text: 'Администратор'},
-        {value: 2, text: 'Пользователь'},
-    ];
+
+    var attrForDel;
+    var jsonObj;
 
     $(".adminTable").mouseenter(function(){
         $(this).css("color", "#FFF8DC");
@@ -11,21 +10,34 @@ $(document).ready(function(){
         $(this).css("color", "");
     });
 
-$(".editRole").click(function (){
-    bootbox.prompt({
-        title: "Выберите роль/роли для пользователя: ",
-        inputType: "checkbox",
-        inputOptions: options,
-        callback: function(result) {
-            showResult(result);
+    $(".delBut").click(function(){
+       var result = confirm("Вы уверены, что хотите удалить этого пользователя?");
+        if(result){
+            attrForDel = $(this).attr("attr");
+            jsonObj = {email:attrForDel};
+            doDelAjax();
         }
     });
-});
 
-});
 
-function showResult(result) {
-    if (typeof result !== "undefined" && result !== null) {
-        alert(result);
-    }
+        $(".editRole").fancybox();
+
+
+
+function doDelAjax() {
+    $.ajax({
+        url: "/admin/deleteUser",
+        type: "post",
+        contentType: "application/json",
+        data:  JSON.stringify(jsonObj),
+        dataType: "json",
+        success: function (data) {
+            console.log(data.message);
+            window.location.href="/admin/admin";
+        },
+        error: function (e) {
+            alert("ERROR for delete user");
+        }
+    });
 }
+});
