@@ -5,6 +5,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -18,24 +19,24 @@ public class User {
     private long id;
 
     @Column(name = "SURNAME", nullable = false)
-    @Pattern(regexp="^[a-zA-Z]+$", message = "{user.surname.invalid}")
+    @Pattern(regexp="^[a-zA-Z]+$", message = "${user.surname.invalid}")
     private String surname;
 
     @Column(name = "NAME", nullable = false)
-    @Pattern(regexp="^[a-zA-Z]+$", message = "{user.name.invalid}")
+    @Pattern(regexp="^[a-zA-Z]+$", message = "${user.name.invalid}")
     private String name;
 
     @Column(name = "EMAIL", nullable = false, unique = true)
     @Email(message = "{user.email.invalid}")
-    @Pattern(regexp="^[\\w-]+(\\.[\\w-]+)*@([\\w-]+\\.)+[a-zA-Z]+$", message = "{user.email.invalid}")
+    @Pattern(regexp="^[\\w-]+(\\.[\\w-]+)*@([\\w-]+\\.)+[a-zA-Z]+$", message = "${user.email.invalid}")
     private String email;
 
-    @Size(min = 5, message = "{size.user.password}")
+    @Size(min = 5, message = "${size.user.password}")
     @Column(name = "PASSWORD", nullable = false)
     private String password;
 
     @Column(name = "PHONE", nullable = false, unique = true)
-    @Size(min = 12, message = "{size.user.phone}")
+    @Size(min = 12, message = "${size.user.phone}")
     @Pattern(regexp="^\\+[0-9][0-9][0-9]?[\\s]*\\(?\\d{2}\\)?[-\\s]?\\d{3}[-\\s]?\\d{2}[-\\s]?\\d{2}$", message = "{user.phone.invalid}")
     private String phone;
 
@@ -43,8 +44,7 @@ public class User {
     private String address;
 
     @Column(name = "REG_DATE")
-    @DateTimeFormat(pattern = "MM/dd/yy")
-    private String regDate;
+    private Date regDate;
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable(name = "USER_USER_ROLE", joinColumns = {
@@ -116,11 +116,11 @@ public class User {
         this.address = address;
     }
 
-    public String getRegDate() {
+    public Date getRegDate() {
         return regDate;
     }
 
-    public void setRegDate(String regDate) {
+    public void setRegDate(Date regDate) {
         this.regDate = regDate;
     }
 

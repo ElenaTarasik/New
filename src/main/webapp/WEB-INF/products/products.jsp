@@ -15,11 +15,12 @@
 <div class="topNavigation">
     <c:import url="/WEB-INF/blocks/topNavigation.jsp"/>
 </div>
+
+<div class="productsContent">
 <div class="leftMenu">
     <c:import url="/WEB-INF/blocks/leftMenu.jsp"/>
 </div>
 
-<div class="productDescription">
 <c:if test="${!empty productsList}">
     <div class="productField">
         <div class="cell">
@@ -29,11 +30,11 @@
                         <td colspan="2">${product.name}</td>
                     </tr>
                     <tr>
-                        <td colspan="2"><img class="productImg" src="${product.pictureLink}" width="200" height="240"/></td>
+                        <td colspan="2"><img class="productImg" src="/resources/image/${product.pictureLink}" width="200" height="240"/></td>
                     </tr>
                     <tr>
                         <td>${product.price} руб.</td>
-                        <td><button><a href="  " >Заказать</a></button></td>
+                        <td><button><a href="  " >Просмотреть</a></button></td>
                         <input class="prodId" type="hidden" value="${product.id}">
                     </tr>
                 </table>
@@ -41,6 +42,9 @@
         </div>
     </div>
 </c:if>
+</div>
+<div class="footerField">
+    <c:import url="/WEB-INF/blocks/footer.jsp"/>
 </div>
 </body>
 </html>

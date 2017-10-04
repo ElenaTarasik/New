@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -23,10 +24,17 @@
       <input type="submit" value="Вход"/>
     </h4>
 </form>
+    <sec:authorize access="hasRole('ROLE_USER')">
+        <button><a class="secureLink" href="/user/secure/">Сменить пароль</a></button>
+        <button><a href="/logout">Выход</a></button>
+    </sec:authorize>
 </p>
 <h3 class="error">
     <span>${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}</span>
 </h3>
+</div>
+<div class="footerField">
+    <c:import url="/WEB-INF/blocks/footer.jsp"/>
 </div>
 </body>
 </html>

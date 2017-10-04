@@ -14,7 +14,6 @@ $(document).ready(function(){
     catalog = $(this).attr("attr");
     collection = $(this).parents(".catalogField").find(".head_coll").attr("attr");
     jsonObj = {collection:collection, name:catalog, products:null};
-    alert(catalog + collection);
     doAjax();
     });
 

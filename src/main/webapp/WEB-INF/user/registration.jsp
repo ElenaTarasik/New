@@ -35,7 +35,10 @@
     <p><button type="submit">Зарегистрироваться</button></p>
 </spring:form>
 </p>
-<h1 class="error">${message}</h1>
+<h3 class="error">${message}</h3>
+</div>
+<div class="footerField">
+    <c:import url="/WEB-INF/blocks/footer.jsp"/>
 </div>
 </body>
 </html>
