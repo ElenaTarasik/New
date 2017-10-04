@@ -60,16 +60,14 @@
 
 </c:forEach>
     </table>
-<form action="addOrder" method="get">
+<form action="addOrder" method="get" >
     <p><button >Сделать покупку</button></p>
+   <p><span class="delMess">${basketMessage}</span></p>
 </form>
-    <%--<p>
-        <spring:form action="addOrder" method="get" modelAttribute="basketOrder">
-    <p><button type="submit" id="basketAdd">Сделать покупку</button></p>
-    </spring:form>--%>
-
 
 </div>
-
+<%--<div class="footerField">
+    <c:import url="/WEB-INF/blocks/footer.jsp"/>
+</div>--%>
 </body>
 </html>

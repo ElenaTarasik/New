@@ -1,8 +1,11 @@
 package by.bigroi.wear.controller;
 
 import by.bigroi.wear.model.order.Basket;
+import by.bigroi.wear.model.user.User;
 import by.bigroi.wear.service.basket.BasketService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,11 +31,8 @@ public class BasketController {
     boolean basket(@RequestBody Basket basket, HttpSession session,Model model) {
 
         Map<Long,Integer>  quan = (Map<Long, Integer>) session.getAttribute("mapBasket");
-
         session.setAttribute("mapBasket",basketService.quantity(basket,quan));
-
         return true;
-
     }
 
     @GetMapping("/basket/basket")
@@ -45,9 +45,10 @@ public class BasketController {
     }
 
     @GetMapping("/basket/addOrder")
-       public String basketAdd (HttpSession session){
+       public String basketAdd (HttpSession session,Model model){
         Map<Long,Integer> quan = (Map<Long, Integer>)session.getAttribute("mapBasket");
-        basketService.addOrder(quan);
+        model.addAttribute("basketMessage",basketService.addOrder(quan));
+        session.setAttribute("mapBasket",null);
         return "basket/basket";
     }
 

@@ -2,6 +2,7 @@ package by.bigroi.wear.service.basket;
 
 import by.bigroi.wear.model.order.Basket;
 import by.bigroi.wear.model.product.Product;
+import org.springframework.ui.Model;
 
 import java.util.List;
 import java.util.Map;
@@ -13,6 +14,6 @@ public interface BasketService {
 
      Map<Long,Integer> quantity(Basket basket, Map<Long, Integer> quan);
      List<Product> basketProduct(Map<Long, Integer> quan);
-     void addOrder(Map<Long, Integer> quan);
+     String addOrder(Map<Long, Integer> quan);
 
 }

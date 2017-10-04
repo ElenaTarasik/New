@@ -38,7 +38,6 @@ $(document).ready(function(){
         var quantity=1;
         jsonObjBasket={articul:articul, quantity:quantity};
         doAjaxBasket();
-
     });
 
     function doAjaxBasket() {
