@@ -3,12 +3,17 @@ package by.bigroi.wear.service.user.user;
 import by.bigroi.wear.dao.user.user.UserDao;
 import by.bigroi.wear.model.user.User;
 import by.bigroi.wear.model.user.UserRole;
+import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Service("userService")
@@ -90,4 +95,27 @@ public class UserServiceImpl implements UserService {
         user.setPassword(passwordEncoder.encode(newPass));
         userDao.updatePassword(user);
     }
+
+    @Override
+    public User getCurrentUser() throws Exception {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
+        if (auth == null) {
+            throw new Exception("");
+        }
+
+        Object obj = auth.getPrincipal();
+        String userEmail = "";
+
+        if (obj instanceof UserDetails) {
+            userEmail = ((UserDetails) obj).getUsername();
+        } else {
+            userEmail = obj.toString();
+        }
+
+        User u = userDao.findByUserEmail(userEmail);
+        return u;
+    }
+
+
 }

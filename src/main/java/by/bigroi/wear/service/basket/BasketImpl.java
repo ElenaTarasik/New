@@ -7,6 +7,8 @@ import by.bigroi.wear.model.order.Order;
 import by.bigroi.wear.model.order.OrderItem;
 import by.bigroi.wear.model.product.Product;
 import by.bigroi.wear.model.user.User;
+import by.bigroi.wear.service.user.user.UserService;
+import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
@@ -26,6 +28,9 @@ public class BasketImpl implements BasketService {
 
     @Autowired
     OrderDao orderDao;
+
+    @Autowired
+    UserService userService;
 
     @Override
     public Map<Long, Integer> quantity(Basket basket, Map<Long, Integer> quan) {
@@ -66,11 +71,17 @@ public class BasketImpl implements BasketService {
 
         List<Product> products = basketProduct(quan);
 
-        /*User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();*/
 
         int quantity = 0;
         double p = 0;
         Order order = new Order();
+        try {
+            userService.getCurrentUser().getId();
+        } catch (Exception e) {
+            /*e.printStackTrace();*/
+            return "Please login or register.";
+
+        }
         /*if (user == null) {
         return "login or register";
         } else {*/
@@ -81,7 +92,7 @@ public class BasketImpl implements BasketService {
 
                         if (products.get(i).getId() == key) {
                             p += (products.get(i).getPrice() * quan.get(key));
-                            quantity++;
+                            quantity+=quan.get(key);
                         }
 
                     }
@@ -100,10 +111,9 @@ public class BasketImpl implements BasketService {
 
                             OrderItem orderItem = new OrderItem();
                             orderItem.setQuantity(quan.get(key));
-                            orderItem.setProduct(products.get(i));
                             orderItem.setOrder(order);
+                            orderItem.setProduct(products.get(i));
                             orderDao.addOrderItemsBasket(orderItem);
-
                         }
 
                     }
@@ -115,8 +125,6 @@ public class BasketImpl implements BasketService {
                 return "Your order is issued";
 
             }else{return "The basket is empty";}
-
-
        /* }*/
 
 

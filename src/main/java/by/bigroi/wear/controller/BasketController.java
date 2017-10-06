@@ -3,7 +3,9 @@ package by.bigroi.wear.controller;
 import by.bigroi.wear.model.order.Basket;
 import by.bigroi.wear.model.user.User;
 import by.bigroi.wear.service.basket.BasketService;
+import by.bigroi.wear.service.user.user.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -46,6 +48,7 @@ public class BasketController {
 
     @GetMapping("/basket/addOrder")
        public String basketAdd (HttpSession session,Model model){
+        System.out.println();
         Map<Long,Integer> quan = (Map<Long, Integer>)session.getAttribute("mapBasket");
         model.addAttribute("basketMessage",basketService.addOrder(quan));
         session.setAttribute("mapBasket",null);

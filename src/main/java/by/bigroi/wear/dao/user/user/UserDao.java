@@ -17,4 +17,5 @@ public interface UserDao {
     public List<Integer> findRoleId(Long userId);
     public void cleanRow(Long id);
     public void updatePassword(User user);
+
 }
