@@ -2,7 +2,9 @@ package by.bigroi.wear.controller;
 
 import by.bigroi.wear.model.response.ResponseMessage;
 import by.bigroi.wear.model.user.User;
+import by.bigroi.wear.model.user.UserRole;
 import by.bigroi.wear.service.user.user.UserService;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,7 +13,11 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Controller
 public class AdminController {
@@ -19,6 +25,7 @@ public class AdminController {
     List<User> userList;
     String oldEmail;
     User userEdit;
+    User userForRole;
 
     @Autowired
     private UserService userService;
@@ -34,7 +41,6 @@ public class AdminController {
     @PostMapping("/admin/deleteUser")
     public @ResponseBody
     ResponseMessage deleteUser(@RequestBody User user){
-        System.out.println("!!!!!!!!!! в контроллере мэйл " + user.getEmail());
         ResponseMessage msg = new ResponseMessage();
         msg.setMessage(userService.deleteUser(user.getEmail()));
         return msg;
@@ -66,9 +72,9 @@ public class AdminController {
 
     @GetMapping("/admin/rolePage")
     public String rolePage(Model model, HttpServletRequest request) {
-        User user = userService.findByUserEmail(request.getParameter("email"));        ;
-        model.addAttribute("userForRole", user);
-        model.addAttribute("userRoles", userService.getRoles(user.getId()));
+        userForRole = userService.findByUserEmail(request.getParameter("email"));        ;
+        model.addAttribute("userForRole", userForRole);
+        model.addAttribute("userRoles", userService.getRoles(userForRole.getId()));
         return "/admin/rolePage";
     }
 
@@ -90,6 +96,35 @@ public class AdminController {
              model.addAttribute("message", "User's password updated successfully");
          }
         return "/admin/passwordChange";
+    }
+
+    @PostMapping("/admin/roleChange")
+    public @ResponseBody ResponseMessage editRole(@RequestBody String ids, Model model) {
+        ResponseMessage msg = new ResponseMessage();
+        ObjectMapper mapper = new ObjectMapper();
+        System.out.println("json !!!!! " + ids);
+        Set<UserRole> roles = new HashSet<>();
+        try {
+            Integer[] role_ids = mapper.readValue(ids, Integer[].class);
+            for (int id: role_ids) {
+                System.out.println("@@@@@!!!! " + id);
+                roles.add(userService.getRole(id));
+            }
+        } catch (IOException e) {
+            System.out.println("Something wrong with roles in method ditRole");
+            e.printStackTrace();
+        }
+        userForRole.setRoles(null);
+        userForRole.setRoles(roles);
+        userService.updateRoles(userForRole);
+        model.addAttribute("userForRole", userForRole);
+        msg.setMessage("Hello from controller");
+        return msg;
+    }
+
+    @GetMapping("/admin/orders")
+    public String orderList(Model model) {
+        return "/admin/orders";
     }
 }
 

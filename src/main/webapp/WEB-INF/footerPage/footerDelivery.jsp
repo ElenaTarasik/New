@@ -13,11 +13,13 @@
 <div class="topNavigation">
     <c:import url="/WEB-INF/blocks/topNavigation.jsp"/>
 </div>
+<div class="startField">
 <div id="delivery">
     <H2>Доставка</H2>
     <p>Быстро доставим Ваш заказ по всей Беларуси!</p>
     <p>Сроки доставки</p>
     <p>Все подробности о доставке Вы можете уточнить круглосуточно у наших специалистов </p>
+</div>
 </div>
 <div class="footerField">
     <c:import url="/WEB-INF/blocks/footer.jsp"/>

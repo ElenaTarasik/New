@@ -54,6 +54,7 @@ a {text-decoration: none;}
     border: 2px solid #BC8F8F;
 }
 .startField{
+    padding: 15px;
     width: 100%;
     position: relative;
     top: 15%;
@@ -101,4 +102,9 @@ a {text-decoration: none;}
     padding: 25px;
     text-align: left;
     margin-bottom: 15%;
+}
+#fancyField{
+    position: relative;
+    z-index: 1;
+    display: block;
 }

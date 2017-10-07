@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Controller
@@ -58,6 +59,8 @@ public class ProductController {
     @GetMapping("/products/productPage")
     public String productPage(Model model){
         model.addAttribute("product", productInfo);
+        model.addAttribute("colorList", productService.getColors(productInfo.getId()));
+        model.addAttribute("sizeList", productService.getSizes(productInfo.getId()));
         return "/products/productPage";
     }
 }

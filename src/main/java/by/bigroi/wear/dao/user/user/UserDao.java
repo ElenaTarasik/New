@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface UserDao {
 
-    public void saveUser(User user);
+    public void saveUser(User user) throws Exception;
     public User findByUserEmail(String email);
     public UserRole getRoleById(int id);
     public List<User> listUsers();
@@ -17,4 +17,5 @@ public interface UserDao {
     public List<Integer> findRoleId(Long userId);
     public void cleanRow(Long id);
     public void updatePassword(User user);
+    public void updateUserRoles(User user);
 }

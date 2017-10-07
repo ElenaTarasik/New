@@ -13,6 +13,7 @@
 <div class="topNavigation">
     <c:import url="/WEB-INF/blocks/topNavigation.jsp"/>
 </div>
+<div class="startField">
 <div id="partners">
     <H2>Партнерам</H2>
     <p>Преимущества сотрудничества с BigRoiWear:</p>
@@ -20,6 +21,7 @@
     <p>- Большие объемы товарооборота</p>
     <p>- Партнерство на взаимовыгодных условиях</p>
     <p>Отправить заявку на сотрудничество</p>
+</div>
 </div>
 <div class="footerField">
     <c:import url="/WEB-INF/blocks/footer.jsp"/>

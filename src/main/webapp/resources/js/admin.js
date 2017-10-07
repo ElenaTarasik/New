@@ -19,11 +19,6 @@ $(document).ready(function(){
         }
     });
 
-
-        $(".editRole").fancybox();
-
-
-
 function doDelAjax() {
     $.ajax({
         url: "/admin/deleteUser",

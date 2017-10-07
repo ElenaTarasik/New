@@ -19,8 +19,16 @@
         <td><img class="productImg" src="/resources/image/${product.pictureLink}" width="400" height="480"/></td>
         <td style="text-align: left">
             <b>Артикул:</b> 00${product.id}<br>
-            <b>Описание: </b>${product.description}<br>
             <b>Производитель: </b>${product.maker}<br>
+            <b>Цвет: </b><br>
+                <c:forEach items="${colorList}" var="color">
+                    <input name="rad" type="radio"/><span class="box"> ${color}</span><br>
+                </c:forEach>
+            <b>Размер: </b><br>
+                <c:forEach items="${sizeList}" var="size">
+                    <input name="rad" type="radio"/><span class="box"> ${size}</span><br>
+                </c:forEach>
+            <b>Описание: </b>${product.description}<br>
         </td>
     </tr>
     <tr>

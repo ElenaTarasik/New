@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Service("userService")
@@ -21,7 +22,7 @@ public class UserServiceImpl implements UserService {
     private PasswordEncoder passwordEncoder;
 
     @Override
-    public String addUser(User user) {
+    public String addUser(User user) throws Exception {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         Set<UserRole> roles = new HashSet<>();
         roles.add(userDao.getRoleById(2));  // id = 1 ADMIN  /  id = 2 CUSTOMER
@@ -74,20 +75,35 @@ public class UserServiceImpl implements UserService {
     if (oldPass == null || new1Pass == null || new2Pass == null) {
             return "Fill in the blank fields";
     } else {
-         /*   if (!passwordEncoder.encode(oldPass).equals(user.getPassword())) {
+        System.out.println("пароль с бд кодированный " + user.getPassword());
+        System.out.println("пароль старый кодированный с юай " + passwordEncoder.encode(oldPass));
+        System.out.println("пароль новый1 кодированный " + passwordEncoder.encode(new1Pass));
+        System.out.println("пароль новый2 кодированный " + passwordEncoder.encode(new2Pass));
+            if (!passwordEncoder.encode(oldPass).equals(user.getPassword())) {
                 return "User with such password does not exist";
-            } else {*/
+            } else {
                 if (!new1Pass.equals(new2Pass)) {
                     return "The second password does not match the first one";
                 } else {
                     return "Ok";
                 }
-        //    }
+            }
         }
     }
 
+    @Override
     public void updateUserPassword(User user, String newPass){
         user.setPassword(passwordEncoder.encode(newPass));
         userDao.updatePassword(user);
+    }
+
+    @Override
+    public UserRole getRole(int id){
+        return userDao.getRoleById(id);
+    }
+
+    @Override
+    public void updateRoles(User user){
+       userDao.updateUserRoles(user);
     }
 }

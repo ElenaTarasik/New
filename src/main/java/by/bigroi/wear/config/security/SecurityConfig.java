@@ -1,5 +1,6 @@
 package by.bigroi.wear.config.security;
 
+import by.bigroi.wear.model.response.SaltEdit;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -30,7 +31,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.csrf().disable().authorizeRequests()
                 .antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
-                .antMatchers("/secure/**").access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
+                .antMatchers("/secure/**").access("hasRole('ROLE_USER')")
                 .antMatchers("/resources/**", "/**").permitAll()
                 .and();
         http.formLogin()
@@ -50,6 +51,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     public PasswordEncoder passwordEncoder(){
         PasswordEncoder encoder = new BCryptPasswordEncoder();
+     /*   PasswordEncoder encoder = new SaltEdit();*/
         return encoder;
     }
 }

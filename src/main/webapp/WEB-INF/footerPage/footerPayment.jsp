@@ -13,12 +13,14 @@
 <div class="topNavigation">
     <c:import url="/WEB-INF/blocks/topNavigation.jsp"/>
 </div>
+<div class="startField">
 <div id="payment">
     <H2>Способы оплаты</H2>
     <p>Оплатить заказ вы можете следующими способами:</p>
     <p>1. Наличными в пункте самовывоза</p>
     <p>2. Наличными курьеру в случае доставки</p>
     <p>3. Банковской картой</p>
+</div>
 </div>
 <div class="footerField">
     <c:import url="/WEB-INF/blocks/footer.jsp"/>

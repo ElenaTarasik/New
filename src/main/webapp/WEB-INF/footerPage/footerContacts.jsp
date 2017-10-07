@@ -13,12 +13,14 @@
 <div class="topNavigation">
     <c:import url="/WEB-INF/blocks/topNavigation.jsp"/>
 </div>
+<div class="startField">
 <div id="contacts">
     <H2>Контакты</H2>
     <p>Свяжитесь с нами удобным для вас способом</p>
     <p>Наши телефоны</p>
     <p>Электронная почта</p>
     <p>Почтовый адрес</p>
+</div>
 </div>
 <div class="footerField">
     <c:import url="/WEB-INF/blocks/footer.jsp"/>

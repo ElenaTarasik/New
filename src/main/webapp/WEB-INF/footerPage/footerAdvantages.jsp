@@ -13,11 +13,13 @@
 <div class="topNavigation">
     <c:import url="/WEB-INF/blocks/topNavigation.jsp"/>
 </div>
+<div class="startField">
 <div id="advantages">
     <H2>Наши преимущества</H2>
     <p>Мы всегда стремимся к лучшему, чтобы радовать Вас
         высоким качеством сервиса, обслуживания и самым
         широким ассортиментом товаров</p>
+</div>
 </div>
 <div class="footerField">
     <c:import url="/WEB-INF/blocks/footer.jsp"/>

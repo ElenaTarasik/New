@@ -13,6 +13,7 @@
 <div class="topNavigation">
     <c:import url="/WEB-INF/blocks/topNavigation.jsp"/>
 </div>
+<div class="startField">
 <div id="order">
         <H2>Как сделать заказ?</H2>
         <p>1. Войти или зарегистрироваться</p>
@@ -37,6 +38,7 @@
         <p>Поздравляем, Ваш заказ принят!
             В течение нескольких минут с Вами свяжется наш специалист для согласования доставки Вашего заказа
             или поступит e-mail оповещение с подтверждением о том, что заказ принят и оформлен на доставку.</p>
+</div>
 </div>
 <div class="footerField">
     <c:import url="/WEB-INF/blocks/footer.jsp"/>
