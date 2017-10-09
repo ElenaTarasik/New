@@ -3,7 +3,11 @@ package by.bigroi.wear.service.user.user;
 import by.bigroi.wear.dao.user.user.UserDao;
 import by.bigroi.wear.model.user.User;
 import by.bigroi.wear.model.user.UserRole;
+import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -22,7 +26,7 @@ public class UserServiceImpl implements UserService {
     private PasswordEncoder passwordEncoder;
 
     @Override
-    public String addUser(User user) throws Exception {
+    public String addUser(User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         Set<UserRole> roles = new HashSet<>();
         roles.add(userDao.getRoleById(2));  // id = 1 ADMIN  /  id = 2 CUSTOMER
@@ -75,35 +79,20 @@ public class UserServiceImpl implements UserService {
     if (oldPass == null || new1Pass == null || new2Pass == null) {
             return "Fill in the blank fields";
     } else {
-        System.out.println("пароль с бд кодированный " + user.getPassword());
-        System.out.println("пароль старый кодированный с юай " + passwordEncoder.encode(oldPass));
-        System.out.println("пароль новый1 кодированный " + passwordEncoder.encode(new1Pass));
-        System.out.println("пароль новый2 кодированный " + passwordEncoder.encode(new2Pass));
-            if (!passwordEncoder.encode(oldPass).equals(user.getPassword())) {
+         /*   if (!passwordEncoder.encode(oldPass).equals(user.getPassword())) {
                 return "User with such password does not exist";
-            } else {
+            } else {*/
                 if (!new1Pass.equals(new2Pass)) {
                     return "The second password does not match the first one";
                 } else {
                     return "Ok";
                 }
-            }
+        //    }
         }
     }
 
-    @Override
     public void updateUserPassword(User user, String newPass){
         user.setPassword(passwordEncoder.encode(newPass));
         userDao.updatePassword(user);
-    }
-
-    @Override
-    public UserRole getRole(int id){
-        return userDao.getRoleById(id);
-    }
-
-    @Override
-    public void updateRoles(User user){
-       userDao.updateUserRoles(user);
     }
 }
