@@ -56,6 +56,30 @@ $(document).ready(function(){
         });
     }
 
+    $("#delBas").click(function(){
+        var idArt=$(this).attr("data-art");
+        jsonObjBasketDel={id:idArt};
+        doAjaxDel();
+    });
+
+    function  doAjaxDel(idArt) {
+        $.ajax({
+            url: "/basketDel",
+            type: "post",
+            contentType: "application/json",
+            data:  JSON.stringify(jsonObjBasketDel),
+            dataType: "json",
+            success: function (data) {
+                alert("Item deleted");
+                document.getElementById(idArt).parentNode.removeChild(document.getElementById(idArt));
+            },
+            error: function (e) {
+                alert("ERROR");
+            }
+        });
+    }
+
+
 });
 
 

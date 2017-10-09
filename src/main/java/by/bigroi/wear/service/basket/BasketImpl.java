@@ -3,6 +3,7 @@ package by.bigroi.wear.service.basket;
 import by.bigroi.wear.dao.order.OrderDao;
 import by.bigroi.wear.dao.user.product.ProductDao;
 import by.bigroi.wear.model.order.Basket;
+import by.bigroi.wear.model.order.BasketDel;
 import by.bigroi.wear.model.order.Order;
 import by.bigroi.wear.model.order.OrderItem;
 import by.bigroi.wear.model.product.Product;
@@ -70,13 +71,13 @@ public class BasketImpl implements BasketService {
     public String addOrder(Map<Long, Integer> quan) {
 
         List<Product> products = basketProduct(quan);
-
+        User user;
 
         int quantity = 0;
         double p = 0;
         Order order = new Order();
         try {
-            userService.getCurrentUser().getId();
+          user =  userService.getCurrentUser();
         } catch (Exception e) {
             /*e.printStackTrace();*/
             return "Please login or register.";
@@ -102,6 +103,7 @@ public class BasketImpl implements BasketService {
                 order.setDate(new Date());
                 order.setQuantity(quantity);
                 order.setPrice(p);
+                order.setUser(user);
                 orderDao.addOrderBasket(order);
                 for (long key : quan.keySet()) {
 
@@ -128,6 +130,22 @@ public class BasketImpl implements BasketService {
        /* }*/
 
 
+    }
+    @Override
+    public List<Order> userOrders(User user){
+        long id =  user.getId();
+        return orderDao.getOrderById(id);
+    }
+
+    @Override
+    public Map<Long, Integer> delOrder(Map<Long, Integer> quan, BasketDel basketDel){
+        Map<Long, Integer> copy = new HashMap<>();
+
+        for (long key : quan.keySet()){
+            if(key!=basketDel.getId()){copy.put(key,quan.get(key));}
+        }
+
+        return copy;
     }
 
 

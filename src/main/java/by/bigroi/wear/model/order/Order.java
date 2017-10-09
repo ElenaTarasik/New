@@ -1,5 +1,7 @@
 package by.bigroi.wear.model.order;
 
+import by.bigroi.wear.model.user.User;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
@@ -25,6 +27,10 @@ public class Order {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "order")
     private List<OrderItem> orderItems = new ArrayList<OrderItem>();
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "ID_USER")
+    private User user;
 
 
     public long getId() {
@@ -65,5 +71,13 @@ public class Order {
 
     public void setOrderItems(List<OrderItem> orderItems) {
         this.orderItems = orderItems;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

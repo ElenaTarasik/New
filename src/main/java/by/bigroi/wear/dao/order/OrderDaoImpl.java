@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import javax.persistence.Query;
 import javax.transaction.Transactional;
+import java.util.List;
 
 
 /**
@@ -38,18 +39,18 @@ public class OrderDaoImpl implements OrderDao {
 
     }
 
-   /* @Override
-    @Transactional
-    public Order getOrderById(long id) {
 
-        Query query = sessionFactory.getCurrentSession().createQuery("from Order where idorder=:paramId");
+    @Transactional
+    public List<Order> getOrderById(long id) {
+
+        Query query = sessionFactory.getCurrentSession().createQuery("from Order where ID_USER=:paramId");
         query.setParameter("paramId",id);
 
-          return (Order) query.getSingleResult();
+          return query.getResultList();
     }
 
 
-    @Override
+  /*  @Override
     @Transactional
     public OrderItem getOrderItemById(long id) {
 

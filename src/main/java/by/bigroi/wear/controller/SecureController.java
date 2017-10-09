@@ -1,6 +1,8 @@
 package by.bigroi.wear.controller;
 
+import by.bigroi.wear.model.order.Order;
 import by.bigroi.wear.model.user.User;
+import by.bigroi.wear.service.basket.BasketService;
 import by.bigroi.wear.service.user.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,12 +14,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 public class SecureController {
 
     @Autowired
     private UserService userService;
+    @Autowired
+    private BasketService basketService;
 
     @GetMapping("/login")
     public String loginPageAfterLogout(Model model) {
@@ -64,7 +69,13 @@ public class SecureController {
 
     @GetMapping("/secure/orders")
     public String userOrders(Model model) {
-        model.addAttribute("user", new User());
+        List<Order> list = null;
+        try {
+            list =  basketService.userOrders(userService.getCurrentUser());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        model.addAttribute("list", list);
         return "/user/userOrders";
     }
 }

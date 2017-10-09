@@ -27,7 +27,13 @@
     <p><h1>Ваш заказ</h1></p>
 
     <table border="2px solid #BC8F8F;"  width="90%">
-
+        <tr>
+            <td>Артикул</td>
+            <td>Наименование товара</td>
+            <td>Количество</td>
+            <td>Цена за ед.</td>
+            <td>Общая цена</td>
+        </tr>
 
 
         <c:forEach items="${basketOrder}" var="basketProduct">
@@ -39,21 +45,14 @@
 
 
 
-        <tr>
-            <td>Артикул</td>
-            <td>Наименование товара</td>
-            <td>Количество</td>
-            <td>Цена за ед.</td>
-            <td>Общая цена</td>
-        </tr>
-        <tr>
+        <tr id=${basketProduct.id}>
             <td>00${basketProduct.id}</td>
             <td>${basketProduct.name}</td>
             <td>${item.value}</td>
             <td>${basketProduct.price}</td>
             <td>${basketProduct.price*item.value}</td>
+            <td><button id="delBas" data-art=${basketProduct.id}>Удалить</button></td>
         </tr>
-
         </c:if>
 
     </c:forEach>

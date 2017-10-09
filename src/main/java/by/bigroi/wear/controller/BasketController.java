@@ -1,6 +1,7 @@
 package by.bigroi.wear.controller;
 
 import by.bigroi.wear.model.order.Basket;
+import by.bigroi.wear.model.order.BasketDel;
 import by.bigroi.wear.model.user.User;
 import by.bigroi.wear.service.basket.BasketService;
 import by.bigroi.wear.service.user.user.UserDetailsServiceImpl;
@@ -30,7 +31,7 @@ public class BasketController {
 
     @PostMapping("/basketPage")
     public @ResponseBody
-    boolean basket(@RequestBody Basket basket, HttpSession session,Model model) {
+    boolean basket(@RequestBody Basket basket, HttpSession session) {
 
         Map<Long,Integer>  quan = (Map<Long, Integer>) session.getAttribute("mapBasket");
         session.setAttribute("mapBasket",basketService.quantity(basket,quan));
@@ -43,16 +44,29 @@ public class BasketController {
         model.addAttribute("basketOrder",basketService.basketProduct(quan));
         model.addAttribute("quantity",quan);
         return "/basket/basket";
-
     }
 
     @GetMapping("/basket/addOrder")
        public String basketAdd (HttpSession session,Model model){
-        System.out.println();
         Map<Long,Integer> quan = (Map<Long, Integer>)session.getAttribute("mapBasket");
         model.addAttribute("basketMessage",basketService.addOrder(quan));
-        session.setAttribute("mapBasket",null);
+        if (basketService.addOrder(quan).equals("Your order is issued"))
+        { session.setAttribute("mapBasket",null);}
         return "basket/basket";
     }
+
+    @PostMapping("/basketDel")
+    public @ResponseBody
+    boolean basketDel(@RequestBody BasketDel basketDel, HttpSession session, Model model){
+        Map<Long,Integer>  quan = (Map<Long, Integer>) session.getAttribute("mapBasket");
+        session.setAttribute("mapBasket",basketService.delOrder(quan,basketDel));
+        quan.get(0);
+        quan = (Map<Long, Integer>) session.getAttribute("mapBasket");
+        model.addAttribute("basketOrder",basketService.basketProduct(quan));
+        model.addAttribute("quantity",(Map<Long, Integer>) session.getAttribute("mapBasket"));
+        return true;
+
+       }
+
 
 }
