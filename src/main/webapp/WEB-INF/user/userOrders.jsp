@@ -23,7 +23,30 @@
    <c:import url="/WEB-INF/blocks/userMenu.jsp"/>
 </div>
     <div class="mainField">
-<span class="head">Список заказов пользователя</span>
+<span class="head">
+    Список заказов пользователя
+ <table border="2px solid #BC8F8F;"  width="90%">
+        <tr>
+            <td>Номер заказа</td>
+            <td>Дата заказа</td>
+            <td>Количество товара</td>
+            <td>Общая цена</td>
+        </tr>
+      <c:forEach items="${list}" var="ordersList">
+           <tr>
+            <td>${ordersList.id}</td>
+            <td>${ordersList.date}</td>
+            <td>${ordersList.quantity}</td>
+            <td>${ordersList.price}</td>
+        </tr>
+
+
+      </c:forEach>
+
+ </table>
+
+
+</span>
     <%--<c:if test="${!empty userList}">
                     <table class="editTable">
                         <tr>
