@@ -49,8 +49,9 @@ public class BasketController {
     @GetMapping("/basket/addOrder")
        public String basketAdd (HttpSession session,Model model){
         Map<Long,Integer> quan = (Map<Long, Integer>)session.getAttribute("mapBasket");
-        model.addAttribute("basketMessage",basketService.addOrder(quan));
-        if (basketService.addOrder(quan).equals("Your order is issued"))
+        String orderStr = basketService.addOrder(quan);
+        model.addAttribute("basketMessage",orderStr);
+        if (orderStr.equals("Your order is issued"))
         { session.setAttribute("mapBasket",null);}
         return "basket/basket";
     }
