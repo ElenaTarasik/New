@@ -2,6 +2,7 @@ package by.bigroi.wear.service.user.user;
 
 import by.bigroi.wear.model.user.User;
 import by.bigroi.wear.model.user.UserRole;
+import javassist.NotFoundException;
 
 import java.sql.SQLException;
 import java.util.List;

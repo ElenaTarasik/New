@@ -1,13 +1,12 @@
 package by.bigroi.wear.model.user;
 
+import by.bigroi.wear.model.order.Order;
 import org.hibernate.validator.constraints.Email;
 import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Table(name = "USER")
@@ -51,6 +50,10 @@ public class User {
             @JoinColumn (name = "ID_USER")}, inverseJoinColumns = {
             @JoinColumn (name = "ID_ROLE")})
     private Set<UserRole> roles = new HashSet<>();
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<Order> order = new ArrayList<>();
+
 
     ////////////////  CONSTRUCTORS ///////////////////////////
 
@@ -130,6 +133,14 @@ public class User {
 
     public void setRoles(Set<UserRole> roles) {
         this.roles = roles;
+    }
+
+    public List<Order> getOrder() {
+        return order;
+    }
+
+    public void setOrder(List<Order> order) {
+        this.order = order;
     }
 
     ///////////// EQUALS + HASHCODE + ToSTRING ///////////////////////

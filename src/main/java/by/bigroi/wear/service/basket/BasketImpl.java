@@ -76,7 +76,7 @@ public class BasketImpl implements BasketService {
         double p = 0;
         Order order = new Order();
         try {
-            userService.getCurrentUser().getId();
+          User user =  userService.getCurrentUser();
         } catch (Exception e) {
             /*e.printStackTrace();*/
             return "Please login or register.";

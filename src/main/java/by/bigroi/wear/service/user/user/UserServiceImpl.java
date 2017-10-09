@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Service("userService")
@@ -25,7 +26,7 @@ public class UserServiceImpl implements UserService {
     private PasswordEncoder passwordEncoder;
 
     @Override
-    public String addUser(User user) {
+    public String addUser(User user) throws Exception {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         Set<UserRole> roles = new HashSet<>();
         roles.add(userDao.getRoleById(2));  // id = 1 ADMIN  /  id = 2 CUSTOMER
@@ -103,7 +104,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void updateRoles(User user){
-       userDao.updateUserRoles(user);
+      userDao.updateUserRoles(user);
     }
 
     @Override

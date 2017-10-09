@@ -16,5 +16,6 @@ public interface UserDao {
     public void updateUser(User user, String oldEmail) throws Exception;
     public List<Integer> findRoleId(Long userId);
     public void cleanRow(Long id);
+    public void updateUserRoles(User user);
     public void updatePassword(User user);
 }
