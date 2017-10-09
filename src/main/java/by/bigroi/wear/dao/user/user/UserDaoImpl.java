@@ -17,7 +17,7 @@ public class UserDaoImpl implements UserDao{
 
     @Override
     @Transactional
-    public void saveUser(User user) {
+    public void saveUser(User user) throws Exception{
         sessionFactory.getCurrentSession().save(user);
     }
 
@@ -72,11 +72,11 @@ public class UserDaoImpl implements UserDao{
         query.executeUpdate();
     }
 
-   /* @Override
+    @Override
     @Transactional
-    public void updateUser(User user, String oldEmail) throws Exception{
+    public void updateUserRoles(User user){
         sessionFactory.getCurrentSession().update(user);
-    }*/
+    }
 
     @Override
     @Transactional

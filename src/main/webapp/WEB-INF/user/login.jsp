@@ -25,8 +25,7 @@
     </h4>
 </form>
     <sec:authorize access="hasRole('ROLE_USER')">
-        <button><a class="secureLink" href="/user/secure/">Сменить пароль</a></button>
-        <button><a href="/logout">Выход</a></button>
+        <button><a class="secureLink" href="/user/secure/">Личный кабинет пользователя</a></button>
     </sec:authorize>
 </p>
 <h3 class="error">

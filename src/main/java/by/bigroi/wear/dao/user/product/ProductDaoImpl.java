@@ -2,6 +2,8 @@ package by.bigroi.wear.dao.user.product;
 
 import by.bigroi.wear.model.catalog.Catalog;
 import by.bigroi.wear.model.product.Product;
+import by.bigroi.wear.model.product.ProductColor;
+import by.bigroi.wear.model.product.ProductSize;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -52,5 +54,23 @@ public class ProductDaoImpl implements ProductDao {
                 .createQuery("from Product where id =:paramId");
         query.setParameter("paramId", id);
         return (Product) query.getSingleResult();
+    }
+
+    @Override
+    @Transactional
+    public List<ProductColor> getColorsByProductId(Long productId){
+        Query query = sessionFactory.getCurrentSession()
+                .createNativeQuery("select color from color where id_product =:paramId");
+        query.setParameter("paramId", productId);
+        return query.getResultList();
+    }
+
+    @Override
+    @Transactional
+    public List<ProductSize> getSizesByProductId(Long productId){
+        Query query = sessionFactory.getCurrentSession()
+                .createNativeQuery("select size from size where id_product =:paramId");
+        query.setParameter("paramId", productId);
+        return query.getResultList();
     }
 }

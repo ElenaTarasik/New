@@ -33,7 +33,13 @@ public class RegisterController {
             model.addAttribute("message", "User didn't save to database");
             return "/user/registration";
         } else {
-            userService.addUser(user);
+            try {
+                userService.addUser(user);
+            } catch (Exception e) {
+                e.printStackTrace();
+                model.addAttribute("message", "Duplicate entry in database. User didn't save");
+                return "/user/registration";
+            }
             return "/index";
         }
     }

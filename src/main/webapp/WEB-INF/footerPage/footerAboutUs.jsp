@@ -13,11 +13,13 @@
 <div class="topNavigation">
     <c:import url="/WEB-INF/blocks/topNavigation.jsp"/>
 </div>
+<div class="startField">
 <div id="aboutUs">
     <H2>О нас</H2>
     <p>BigRoiWear – один из крупнейших интернет-магазинов модной одежды и
         аксессуаров! Из года в год мы продолжаем развиваться, расширять географию присутствия и улучшать
         качество обслуживания, чтобы радовать Вас каждый день!</p>
+</div>
 </div>
 <div class="footerField">
     <c:import url="/WEB-INF/blocks/footer.jsp"/>

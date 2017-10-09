@@ -48,7 +48,7 @@ public class SecureController {
         return "/user/secure";
     }
 
-    @GetMapping("/user/secure/editUserPassword")
+    @GetMapping("/secure/editUserPassword")
     public String ediPassword(Model model, HttpServletRequest request) {
         User user = userService.findByUserEmail(request.getParameter("login"));
         String passResult = userService.checkPass(user, request.getParameter("oldPass"),
@@ -59,6 +59,12 @@ public class SecureController {
             userService.updateUserPassword(user, request.getParameter("new2Pass"));
             model.addAttribute("message", "User's password updated successfully");
         }
-        return "/user/login";
+        return "/user/secure";
+    }
+
+    @GetMapping("/secure/orders")
+    public String userOrders(Model model) {
+        model.addAttribute("user", new User());
+        return "/user/userOrders";
     }
 }

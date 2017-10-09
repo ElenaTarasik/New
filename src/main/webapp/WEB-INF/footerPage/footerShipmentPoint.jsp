@@ -13,9 +13,11 @@
 <div class="topNavigation">
     <c:import url="/WEB-INF/blocks/topNavigation.jsp"/>
 </div>
+<div class="startField">
 <div id="shipmentPoint">
     <H2>Пункты самовывоза</H2>
     <p>Адреса пунктов самовывоза</p>
+</div>
 </div>
 <div class="footerField">
     <c:import url="/WEB-INF/blocks/footer.jsp"/>

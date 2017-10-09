@@ -13,7 +13,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Service("userService")
@@ -91,9 +90,20 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    @Override
     public void updateUserPassword(User user, String newPass){
         user.setPassword(passwordEncoder.encode(newPass));
         userDao.updatePassword(user);
+    }
+
+    @Override
+    public UserRole getRole(int id){
+        return userDao.getRoleById(id);
+    }
+
+    @Override
+    public void updateRoles(User user){
+       userDao.updateUserRoles(user);
     }
 
     @Override

@@ -3,6 +3,8 @@ package by.bigroi.wear.service.user.product;
 import by.bigroi.wear.dao.user.product.ProductDao;
 import by.bigroi.wear.model.catalog.Catalog;
 import by.bigroi.wear.model.product.Product;
+import by.bigroi.wear.model.product.ProductColor;
+import by.bigroi.wear.model.product.ProductSize;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,5 +31,15 @@ public class ProductServiceImpl implements ProductService {
     public Product getProductByID(long id) {
 
         return productDao.getProductByID(id);
+    }
+
+    @Override
+    public List<ProductColor> getColors(Long productId){
+        return productDao.getColorsByProductId(productId);
+    }
+
+    @Override
+    public List<ProductSize> getSizes(Long productId){
+        return productDao.getSizesByProductId(productId);
     }
 }

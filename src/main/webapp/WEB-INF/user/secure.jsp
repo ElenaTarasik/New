@@ -7,17 +7,23 @@
     <title>AUTHORIZED_USER_PAGE</title>
     <link type="text/css" rel="stylesheet" href="/resources/css/base.css"/>
     <link type="text/css" rel="stylesheet" href="/resources/css/admin.css"/>
+    <script src="/resources/js/jquery-3.2.1.js"></script>
+    <script src="/resources/js/admin.js"></script>
 </head>
 <body>
 <div class="topNavigation">
     <c:import url="/WEB-INF/blocks/topNavigation.jsp"/>
 </div>
-<sec:authentication property="name" /><br>
+<%--<sec:authentication property="name" /><br>
 <sec:authentication property="authorities"/><br>--%>
 <div class="userField">
+    <div class="adminMenu">
+        <c:import url="/WEB-INF/blocks/userMenu.jsp"/>
+    </div>
+    <div class="mainField">
     <span class="head">Смена пароля</span><br>
     <div class="editForm">
-        <form action="editUserPassword" method="get" modelAttribute="user">
+       <form action="/secure/editUserPassword" method="get" modelAttribute="user">
             <span class="formLab">Введите старый пароль:</span>
             <input class="editForm" name="oldPass" type="password" required="true" placeholder="123AsKKl5"/><br>
             <span class="formLab">Введите новый пароль:</span>
@@ -29,9 +35,8 @@
         </form>
     </div>
     <p><span class="delMess">${message}</span></p>
-    <button><a href="/logout">Выход</a></button>
 </div>
-
+</div>
 <div class="footerField">
     <c:import url="/WEB-INF/blocks/footer.jsp"/>
 </div>
